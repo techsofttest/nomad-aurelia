@@ -16,7 +16,7 @@ export default function HomePage() {
     <main className="overflow-hidden">
       <Header />
       <HeroSection />
-      <TrustStrip />
+      {/* <TrustStrip /> */}
       <AboutSection />
       <ApproachSection />
       <ServicesSection />

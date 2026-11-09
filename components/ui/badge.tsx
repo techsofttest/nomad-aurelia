@@ -14,7 +14,7 @@ export function Badge({
   const variantStyles = {
     cream: "bg-[var(--color-cream)] text-[var(--color-ink)]",
     gold: "bg-[var(--color-gold)] text-[var(--color-ink)]",
-    paper: "bg-[var(--color-paper)] text-[var(--color-ink)]",
+    paper: "bg-white text-[var(--color-ink)]",
   };
 
   return (

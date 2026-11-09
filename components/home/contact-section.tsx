@@ -1,4 +1,6 @@
 import { ArrowUpRight, Globe2 } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
 
 export function ContactSection() {
   return (
@@ -6,9 +8,11 @@ export function ContactSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[1fr_0.8fr]">
           <div>
-            <span className="text-sm font-semibold text-[var(--color-ink-soft)]">
-              Start a conversation
-            </span>
+            <SectionBadge
+              label="Start a conversation"
+              theme="light"
+              className="border-black/10 bg-black/5"
+            />
 
             <h2 className="mt-5 max-w-3xl font-serif text-6xl leading-[0.88] tracking-[-0.04em] text-[var(--color-ink)] sm:text-7xl">
               Tell us what you are building. We will help you map the next
@@ -16,24 +20,26 @@ export function ContactSection() {
             </h2>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a
+              <LinkButton
                 href="mailto:finance@nomadaurelia.com"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-ink)] px-6 py-4 text-sm font-semibold text-white"
+                variant="primary"
+                size="lg"
               >
                 Email Nomad
                 <ArrowUpRight className="h-4 w-4" />
-              </a>
+              </LinkButton>
 
-              <a
+              <LinkButton
                 href="tel:+971508332542"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-sm font-semibold text-[var(--color-ink)]"
+                variant="secondary"
+                size="lg"
               >
                 Call us
-              </a>
+              </LinkButton>
             </div>
           </div>
 
-          <div className="rounded-[2rem] bg-[var(--color-paper)] p-7 sm:p-9">
+          <div className="rounded-[2rem] bg-white p-7 sm:p-9">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-gold-pale)]">
               <Globe2 className="h-5 w-5 text-[var(--color-ink)]" />
             </div>

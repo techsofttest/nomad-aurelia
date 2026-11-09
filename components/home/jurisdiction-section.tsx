@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
 
 const jurisdictions = [
   {
@@ -18,7 +20,7 @@ const jurisdictions = [
 
 export function JurisdictionSection() {
   return (
-    <section className="bg-[var(--color-paper)] py-24 lg:py-32">
+    <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="relative overflow-hidden rounded-[2rem] bg-[var(--color-gold-pale)]">
@@ -30,15 +32,13 @@ export function JurisdictionSection() {
               className="h-[620px] w-full object-cover"
             />
 
-            <div className="absolute left-5 top-5 rounded-full bg-[var(--color-paper)] px-4 py-2 text-xs font-semibold text-[var(--color-ink)]">
+            <div className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[var(--color-ink)]">
               Mainland · Free Zone · Offshore
             </div>
           </div>
 
           <div>
-            <span className="text-sm font-semibold text-[var(--color-gold)]">
-              Finding the right route
-            </span>
+            <SectionBadge label="Finding the right route" theme="light" />
 
             <h2 className="mt-5 max-w-2xl font-serif text-5xl leading-[0.94] tracking-[-0.035em] sm:text-6xl">
               There is no single best way to establish a business in the UAE.
@@ -75,13 +75,15 @@ export function JurisdictionSection() {
               ))}
             </div>
 
-            <a
+            <LinkButton
               href="#contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-6 py-4 text-sm font-semibold text-white"
+              variant="primary"
+              size="lg"
+              className="mt-8"
             >
               Talk through your options
               <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </LinkButton>
           </div>
         </div>
       </div>

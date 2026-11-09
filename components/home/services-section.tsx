@@ -11,6 +11,8 @@ import {
   ShieldCheck,
   UserRound,
 } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
 
 export const services = [
   {
@@ -114,9 +116,7 @@ export function ServicesSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <span className="text-sm font-semibold text-[var(--color-gold)]">
-              What we handle
-            </span>
+            <SectionBadge label="What we handle" theme="dark" />
 
             <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[0.92] tracking-[-0.035em] sm:text-6xl">
               The business essentials, connected under one roof.
@@ -140,18 +140,16 @@ export function ServicesSection() {
                   key={service.number}
                   type="button"
                   onClick={() => setActiveService(index)}
-                  className={`group flex w-full items-center gap-5 rounded-2xl p-5 text-left transition ${
-                    active
+                  className={`group flex w-full items-center gap-5 rounded-2xl p-5 text-left transition ${active
                       ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
                       : "bg-white/5 text-white hover:bg-white/10"
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`font-serif text-3xl ${
-                      active
+                    className={`font-serif text-3xl ${active
                         ? "text-[var(--color-ink)]"
                         : "text-[var(--color-gold)]"
-                    }`}
+                      }`}
                   >
                     {service.number}
                   </span>
@@ -161,9 +159,8 @@ export function ServicesSection() {
                       {service.title}
                     </span>
                     <span
-                      className={`mt-1 block text-sm ${
-                        active ? "text-[var(--color-ink-soft)]" : "text-white/60"
-                      }`}
+                      className={`mt-1 block text-sm ${active ? "text-[var(--color-ink-soft)]" : "text-white/60"
+                        }`}
                     >
                       {service.shortTitle}
                     </span>
@@ -175,7 +172,7 @@ export function ServicesSection() {
             })}
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] bg-[var(--color-paper)] text-[var(--color-ink)]">
+          <div className="overflow-hidden rounded-[2rem] bg-white text-[var(--color-ink)]">
             <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
               <div className="relative min-h-[420px]">
                 <Image
@@ -220,13 +217,15 @@ export function ServicesSection() {
                   ))}
                 </div>
 
-                <a
+                <LinkButton
                   href="#contact"
-                  className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)]"
+                  variant="ternary"
+                  size="md"
+                  className="mt-8 self-start"
                 >
                   Discuss this service
                   <ArrowRight className="h-4 w-4" />
-                </a>
+                </LinkButton>
               </div>
             </div>
           </div>

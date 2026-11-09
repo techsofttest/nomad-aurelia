@@ -1,114 +1,105 @@
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
+import { HeroStatsVerticalCarousel } from "@/components/ui/hero-stats-carousel";
+
+const stats = [
+  {
+    number: "01",
+    label: "Tailored business structures",
+  },
+  {
+    number: "05",
+    label: "Connected service areas",
+  },
+  {
+    number: "360°",
+    label: "Support beyond setup",
+  },
+];
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[800px] overflow-hidden bg-[var(--color-cream)]">
-      <div className="absolute inset-y-0 right-0 hidden w-[43%] bg-[var(--color-gold-pale)] lg:block" />
+    <section className="relative flex min-h-[640px] flex-col justify-between overflow-hidden pt-28 sm:min-h-[720px] sm:pt-32 lg:aspect-[16/12] lg:min-h-[820px] lg:pt-40">
+      {/* Background Image: Desert Dusk Conversation */}
+      <Image
+        src="/hero/Desert Dusk Conversation2.png"
+        alt="Desert Dusk Conversation background"
+        fill
+        priority
+        className="object-cover object-center"
+      />
 
-      <div className="mx-auto grid min-h-[800px] max-w-7xl items-center gap-12 px-6 pb-20 pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-16 lg:pt-40">
-        <div className="relative z-10">
-          <div className="mb-8 flex items-center gap-3">
-            <span className="h-px w-12 bg-[var(--color-gold)]" />
-            <span className="text-sm font-semibold tracking-wide text-[var(--color-muted)]">
-              Corporate solutions for the UAE
+      {/* Centered Content */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white lg:px-8">
+        {/* Eyebrow badge */}
+        <SectionBadge
+          label="Corporate solutions for the UAE"
+          theme="dark"
+          className="mb-6 justify-center"
+        />
+
+        {/* Headline with business owner profile pictures inline */}
+        <h1 className="mx-auto max-w-4xl font-serif text-5xl uppercase leading-[1.05] tracking-[-0.035em] text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-[4rem] lg:leading-[1.02]">
+          Build your business{" "}
+          <span className="mx-1.5 my-1 inline-flex items-center align-middle">
+            <span className="flex -space-x-3 overflow-hidden rounded-full border-2 border-white/60 bg-white/20 p-0.5 backdrop-blur-sm">
+              <Image
+                src="/images/avatar-1.jpg"
+                alt="Business Founder"
+                width={40}
+                height={40}
+                className="inline-block h-8 w-8 rounded-full object-cover ring-2 ring-white/40 sm:h-10 sm:w-10"
+              />
+              <Image
+                src="/images/avatar-2.jpg"
+                alt="Business Owner"
+                width={40}
+                height={40}
+                className="inline-block h-8 w-8 rounded-full object-cover ring-2 ring-white/40 sm:h-10 sm:w-10"
+              />
+              <Image
+                src="/images/avatar-3.jpg"
+                alt="Entrepreneur"
+                width={40}
+                height={40}
+                className="inline-block h-8 w-8 rounded-full object-cover ring-2 ring-white/40 sm:h-10 sm:w-10"
+              />
             </span>
-          </div>
+          </span>{" "}
+          with clarity, confidence and a partner who stays.
+        </h1>
 
-          <h1 className="max-w-4xl font-serif text-6xl leading-[0.88] tracking-[-0.04em] text-[var(--color-ink)] sm:text-7xl lg:text-6xl">
-            Build your business with clarity, confidence and a partner who stays.
-          </h1>
 
-          <p className="mt-8 max-w-xl text-base leading-7 text-[var(--color-ink-soft)] sm:text-lg">
-            Tailored support for company formation, banking, accounting,
-            compliance and the practical details of doing business in the UAE.
-          </p>
+        {/* CTA Buttons in White */}
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <LinkButton
+            href="#contact"
+            variant="primary"
+            size="lg"
+            onDark
+            className="w-full sm:w-auto"
+          >
+            Request a consultation
+            <ArrowUpRight className="h-4 w-4" />
+          </LinkButton>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#contact"
-              className="group flex items-center justify-center gap-3 rounded-full bg-[var(--color-ink)] px-6 py-4 text-sm font-semibold text-white transition hover:bg-[var(--color-ink-soft)]"
-            >
-              Request a consultation
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-
-            <a
-              href="#services"
-              className="flex items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-semibold text-[var(--color-ink)] transition hover:bg-[var(--color-gold-pale)]"
-            >
-              Explore our services
-              <ArrowDown className="h-4 w-4" />
-            </a>
-          </div>
-
-          <div className="mt-14 grid max-w-2xl grid-cols-3 gap-5">
-            <div>
-              <p className="font-serif text-4xl text-[var(--color-ink)]">
-                01
-              </p>
-              <p className="mt-1 text-sm leading-5 text-[var(--color-muted)]">
-                Tailored business structures
-              </p>
-            </div>
-
-            <div>
-              <p className="font-serif text-4xl text-[var(--color-ink)]">
-                05
-              </p>
-              <p className="mt-1 text-sm leading-5 text-[var(--color-muted)]">
-                Connected service areas
-              </p>
-            </div>
-
-            <div>
-              <p className="font-serif text-4xl text-[var(--color-ink)]">
-                360°
-              </p>
-              <p className="mt-1 text-sm leading-5 text-[var(--color-muted)]">
-                Support beyond setup
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative lg:pl-10">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[var(--color-ink)]">
-            <Image
-              src="/images/hero-business.jpg"
-              alt="Modern Dubai business district"
-              width={1000}
-              height={1200}
-              priority
-              className="h-[620px] w-full object-cover"
-            />
-
-            <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-[var(--color-paper)] p-5">
-              <div className="flex items-start justify-between gap-5">
-                <div>
-                  <p className="text-xs font-semibold text-[var(--color-muted)]">
-                    Your starting point
-                  </p>
-                  <p className="mt-1 max-w-xs font-serif text-2xl leading-tight text-[var(--color-ink)]">
-                    One conversation can clarify the route ahead.
-                  </p>
-                </div>
-
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-gold)]">
-                  <MessageCircle className="h-5 w-5 text-[var(--color-ink)]" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute -bottom-7 -left-5 hidden rounded-2xl bg-[var(--color-gold)] p-5 sm:block lg:left-0">
-            <Sparkles className="h-6 w-6 text-[var(--color-ink)]" />
-            <p className="mt-3 max-w-[150px] text-sm font-semibold leading-5 text-[var(--color-ink)]">
-              Built around the way your business actually works
-            </p>
-          </div>
+          <LinkButton
+            href="#services"
+            variant="secondary"
+            size="lg"
+            onDark
+            className="w-full sm:w-auto"
+          >
+            Explore our services
+            <ArrowDown className="h-4 w-4" />
+          </LinkButton>
         </div>
       </div>
+
+      {/* Vertical Animated Stats Carousel at the left edge */}
+      <HeroStatsVerticalCarousel items={stats} intervalMs={2800} />
     </section>
   );
 }

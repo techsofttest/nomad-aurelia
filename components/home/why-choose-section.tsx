@@ -1,3 +1,5 @@
+import { SectionBadge } from "@/components/ui/section-badge";
+
 const trustPoints = [
   {
     number: "01",
@@ -26,9 +28,7 @@ export function WhyChooseSection() {
     <section className="bg-[var(--color-gold-pale)] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="max-w-4xl">
-          <span className="text-sm font-semibold text-[var(--color-ink-soft)]">
-            Why clients choose Nomad
-          </span>
+          <SectionBadge label="Why clients choose Nomad" theme="light" />
 
           <h2 className="mt-5 font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-[var(--color-ink)] sm:text-6xl lg:text-7xl">
             Trust is built by making complicated decisions feel clear.
@@ -39,7 +39,7 @@ export function WhyChooseSection() {
           {trustPoints.map((item) => (
             <div
               key={item.number}
-              className="rounded-2xl bg-[var(--color-paper)] p-7"
+              className="rounded-2xl bg-white p-7"
             >
               <span className="font-serif text-4xl text-[var(--color-gold)]">
                 {item.number}

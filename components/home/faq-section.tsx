@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 export const faqs = [
   {
@@ -33,9 +34,7 @@ export function FaqSection() {
     <section id="faq" className="bg-[var(--color-cream)] py-24 lg:py-32">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-8">
         <div>
-          <span className="text-sm font-semibold text-[var(--color-gold)]">
-            Common questions
-          </span>
+          <SectionBadge label="Common questions" theme="light" />
 
           <h2 className="mt-5 max-w-md font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-[var(--color-ink)] sm:text-6xl">
             Clarity before commitment.

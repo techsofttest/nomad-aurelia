@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
 
 export function ConsultationSection() {
   return (
-    <section className="bg-[var(--color-paper)] py-24 lg:py-32">
+    <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="overflow-hidden rounded-[2rem] bg-[var(--color-ink)]">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
@@ -26,9 +28,11 @@ export function ConsultationSection() {
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-16">
-              <span className="text-sm font-semibold text-[var(--color-gold)]">
-                Before you choose a structure
-              </span>
+              <SectionBadge
+                label="Before you choose a structure"
+                theme="dark"
+                className="self-start"
+              />
 
               <h2 className="mt-5 max-w-2xl font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-white sm:text-6xl">
                 Your business is different. Your setup should be too.
@@ -41,20 +45,24 @@ export function ConsultationSection() {
               </p>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <a
+                <LinkButton
                   href="#contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-gold)] px-6 py-4 text-sm font-semibold text-[var(--color-ink)]"
+                  variant="primary"
+                  size="lg"
+                  onDark
                 >
                   Request a consultation
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
+                </LinkButton>
 
-                <a
+                <LinkButton
                   href="tel:+971508332542"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-4 text-sm font-semibold text-white hover:bg-white/15"
+                  variant="secondary"
+                  size="lg"
+                  onDark
                 >
                   Call +971 50 833 2542
-                </a>
+                </LinkButton>
               </div>
             </div>
           </div>

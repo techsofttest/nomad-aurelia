@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { SectionBadge } from "@/components/ui/section-badge";
 
 const steps = [
   {
@@ -29,9 +30,7 @@ export function ApproachSection() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
           <div>
-            <span className="text-sm font-semibold text-[var(--color-gold)]">
-              A clearer journey
-            </span>
+            <SectionBadge label="A clearer journey" theme="light" />
 
             <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-[var(--color-ink)] sm:text-6xl">
               From the first question to a business that is ready to move.
@@ -47,7 +46,7 @@ export function ApproachSection() {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="rounded-2xl bg-[var(--color-paper)] p-7 transition hover:-translate-y-1"
+                className="rounded-2xl bg-white p-7 transition hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-serif text-4xl text-[var(--color-gold)]">
