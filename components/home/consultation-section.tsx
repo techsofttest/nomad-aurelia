@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { LinkButton } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function ConsultationSection() {
   return (
@@ -23,7 +24,7 @@ export function ConsultationSection() {
           />
 
           {/* Top Left: Badge & Main Title */}
-          <div className="relative z-10 max-w-2xl text-left">
+          <ScrollReveal delay={0.05} direction="up" className="relative z-10 max-w-2xl text-left">
             <SectionBadge
               label="Before you choose a structure"
               theme="dark"
@@ -33,10 +34,14 @@ export function ConsultationSection() {
             <h2 className="mt-5 font-serif text-4xl font-semibold leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
               Your business is different. Your setup should be too.
             </h2>
-          </div>
+          </ScrollReveal>
 
           {/* Bottom Right: Description & Action Buttons */}
-          <div className="relative z-10 mt-12 flex flex-col items-start self-start lg:mt-0 lg:max-w-xl lg:items-end lg:self-end lg:text-right">
+          <ScrollReveal
+            delay={0.15}
+            direction="up"
+            className="relative z-10 mt-12 flex flex-col items-start self-start lg:mt-0 lg:max-w-xl lg:items-end lg:self-end lg:text-right"
+          >
             <p className="max-w-xl text-base font-normal leading-7 text-neutral-200">
               Tell us what you are building, where you are coming from and
               where you want to go. We will help you understand the next
@@ -63,7 +68,7 @@ export function ConsultationSection() {
                 Call +971 50 833 2542
               </LinkButton>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

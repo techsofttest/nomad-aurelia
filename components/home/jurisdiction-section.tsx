@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Compass } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { LinkButton } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const jurisdictions = [
   {
@@ -23,7 +24,7 @@ export function JurisdictionSection() {
     <section className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Top Centered Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <ScrollReveal delay={0.05} direction="up" className="mx-auto max-w-3xl text-center">
           <SectionBadge
             label="Finding the right route"
             theme="light"
@@ -38,12 +39,17 @@ export function JurisdictionSection() {
             The right structure depends on what you do, where you operate, who
             owns the business and where you want to take it next.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Bento Grid Layout - rounded-md, no shadows, no borders */}
         <div className="mt-16 grid grid-cols-1 gap-5 lg:grid-cols-12">
           {/* Bento Item 1: Large Featured Visual Image Box (Spans 5 cols on lg) */}
-          <div className="relative min-h-[340px] overflow-hidden rounded-md bg-[var(--color-cream)] lg:col-span-5 lg:min-h-full">
+          <ScrollReveal
+            delay={0.1}
+            direction="up"
+            distance={24}
+            className="relative min-h-[340px] overflow-hidden rounded-md bg-[var(--color-cream)] lg:col-span-5 lg:min-h-full"
+          >
             <Image
               src="/jurisdiction-section/Executive Skyline Business Meeting.png"
               alt="Dubai business district"
@@ -54,14 +60,19 @@ export function JurisdictionSection() {
             <div className="absolute left-5 top-5 rounded-md bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-[var(--color-ink)] backdrop-blur-sm">
               Mainland · Free Zone · Offshore
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Bento Right Column (Spans 7 cols on lg): 3 Jurisdiction Cards + CTA Card */}
           <div className="flex flex-col gap-5 lg:col-span-7">
             {/* 3 Jurisdiction Cards in a structured layout */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
               {/* Mainland Card (spans 2 on sm for prominent display) */}
-              <div className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)] sm:col-span-2">
+              <ScrollReveal
+                delay={0.15}
+                direction="up"
+                distance={20}
+                className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)] sm:col-span-2"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <span className="font-sans text-2xl font-bold tracking-tight text-[#b87d3b]">
@@ -76,10 +87,15 @@ export function JurisdictionSection() {
                 <p className="mt-3 text-sm font-medium leading-6 text-neutral-800">
                   {jurisdictions[0].text}
                 </p>
-              </div>
+              </ScrollReveal>
 
               {/* Free Zone Card */}
-              <div className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)]">
+              <ScrollReveal
+                delay={0.2}
+                direction="up"
+                distance={20}
+                className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)]"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <span className="font-sans text-2xl font-bold tracking-tight text-[#b87d3b]">
@@ -94,10 +110,15 @@ export function JurisdictionSection() {
                 <p className="mt-3 text-sm font-medium leading-6 text-neutral-800">
                   {jurisdictions[1].text}
                 </p>
-              </div>
+              </ScrollReveal>
 
               {/* Offshore Card */}
-              <div className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)]">
+              <ScrollReveal
+                delay={0.25}
+                direction="up"
+                distance={20}
+                className="group flex flex-col justify-between rounded-md bg-[var(--color-cream)] p-6 transition-colors hover:bg-[var(--color-sand)]"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <span className="font-sans text-2xl font-bold tracking-tight text-[#b87d3b]">
@@ -112,30 +133,38 @@ export function JurisdictionSection() {
                 <p className="mt-3 text-sm font-medium leading-6 text-neutral-800">
                   {jurisdictions[2].text}
                 </p>
-              </div>
+              </ScrollReveal>
             </div>
 
             {/* CTA Bento Bar */}
-            <div className="flex flex-col items-start justify-between gap-4 rounded-md bg-[var(--color-ink)] p-6 text-white sm:flex-row sm:items-center">
+            <ScrollReveal
+              delay={0.3}
+              direction="up"
+              distance={20}
+              className="flex flex-col justify-between gap-6 rounded-md bg-[var(--color-ink)] p-6 sm:p-7 text-white"
+            >
               <div>
-                <p className="font-serif text-xl font-medium leading-snug text-white">
+                <p className="text-xl font-medium leading-snug text-white">
                   Unsure which jurisdiction fits your business?
                 </p>
                 <p className="mt-1 text-xs font-normal text-white/90">
                   Our advisors will map your activity to the optimal structure.
                 </p>
               </div>
-              <LinkButton
-                href="#contact"
-                variant="primary"
-                size="md"
-                onDark
-                className="shrink-0"
-              >
-                Talk through your options
-                <ArrowUpRight className="h-4 w-4" />
-              </LinkButton>
-            </div>
+              <div className="flex items-end justify-between w-full">
+                <Compass className="h-8 w-8 text-white/50 stroke-[1.25]" />
+                <LinkButton
+                  href="#contact"
+                  variant="primary"
+                  size="md"
+                  onDark
+                  className="shrink-0"
+                >
+                  Talk through your options
+                  <ArrowUpRight className="h-4 w-4" />
+                </LinkButton>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

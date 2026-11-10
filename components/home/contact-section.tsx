@@ -2,28 +2,29 @@ import Image from "next/image";
 import { ArrowUpRight, Globe2 } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { LinkButton } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="relative overflow-hidden bg-[var(--color-ink)]">
-      <div className="grid lg:grid-cols-[1.1fr_0.9fr] items-stretch">
-        {/* Left Column: Background image 'public/banner/b4.jpg' with high-contrast text */}
-        <div className="relative flex flex-col justify-center overflow-hidden py-20 px-6 sm:px-10 lg:py-28 lg:pl-12 lg:pr-16 w-full">
-          {/* Background image */}
-          <Image
-            src="/banner/b4.jpg"
-            alt="Nomad Aurelia Contact"
-            fill
-            className="object-cover object-center"
-          />
+    <section id="contact" className="relative overflow-hidden bg-neutral-950">
+      {/* Background Image across the entire section */}
+      <Image
+        src="/banner/b4.jpg"
+        alt="Nomad Aurelia Contact"
+        fill
+        className="object-cover object-center"
+      />
 
-          {/* Gradient overlay for contrast */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50"
-          />
+      {/* Dark gradient overlay across the whole section for readability */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/50"
+      />
 
-          <div className="relative z-10 max-w-2xl ml-auto w-full">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-20 lg:py-28">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
+          {/* Left Column: Headline, Badge, Action Buttons */}
+          <ScrollReveal delay={0.05} direction="up" className="max-w-2xl text-left">
             <SectionBadge
               label="Start a conversation"
               theme="dark"
@@ -55,97 +56,66 @@ export function ContactSection() {
                 Call us
               </LinkButton>
             </div>
-          </div>
-        </div>
+          </ScrollReveal>
 
-        {/* Right Column: Brand dark blue background (#062638) with 3 standalone cross stars */}
-        <div className="relative flex flex-col justify-center items-center lg:items-start py-20 px-6 sm:px-10 lg:py-28 lg:pl-16 lg:pr-12 w-full h-full bg-[#062638] overflow-hidden text-white">
-          {/* Standalone cross stars spread across the canvas */}
-          {/* Star 1 - Top right */}
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute right-12 top-12 h-6 w-6 text-white/40 animate-pulse"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-          >
-            <path d="M12 2v20M2 12h20" />
-          </svg>
+          {/* Right Column: Boxed card with 12px padding & clean white background */}
+          <div className="flex justify-start lg:justify-end w-full">
+            <ScrollReveal
+              delay={0.15}
+              direction="up"
+              distance={24}
+              className="w-full max-w-md"
+            >
+              <div className="relative w-full rounded-md bg-white p-[12px] text-neutral-950 overflow-hidden">
+                {/* Inner card content with high contrast dark text */}
+                <div className="p-6 sm:p-7">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-md bg-[var(--color-cream)] text-neutral-950">
+                    <Globe2 className="h-5 w-5" />
+                  </div>
 
-          {/* Star 2 - Mid left / accent */}
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute right-1/3 top-1/4 h-3.5 w-3.5 text-white/30"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path d="M12 4v16M4 12h16" />
-          </svg>
+                  <h3 className="mt-6 font-serif text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950">
+                    Nomad Aurelia L.L.C-FZ
+                  </h3>
 
-          {/* Star 3 - Bottom right */}
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-14 right-16 h-5 w-5 text-white/35"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-          >
-            <path d="M12 3v18M3 12h18" />
-          </svg>
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-neutral-600">
+                        Phone
+                      </p>
+                      <a
+                        href="tel:+971508332542"
+                        className="mt-1 block text-base font-bold text-neutral-950 transition-colors hover:text-neutral-700"
+                      >
+                        +971 50 833 2542
+                      </a>
+                    </div>
 
-          {/* Content directly on dark blue canvas with crisp white typography */}
-          <div className="relative z-10 w-full max-w-md">
-            <div className="flex h-12 w-12 items-center justify-center rounded-md bg-white/10 text-white backdrop-blur-sm">
-              <Globe2 className="h-6 w-6" />
-            </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-neutral-600">
+                        Email
+                      </p>
+                      <a
+                        href="mailto:finance@nomadaurelia.com"
+                        className="mt-1 block text-base font-bold text-neutral-950 transition-colors hover:text-neutral-700"
+                      >
+                        finance@nomadaurelia.com
+                      </a>
+                    </div>
 
-            <h3 className="mt-8 font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Nomad Aurelia L.L.C-FZ
-            </h3>
-
-            <div className="mt-8 space-y-6">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-white">
-                  Phone
-                </p>
-                <a
-                  href="tel:+971508332542"
-                  className="mt-1.5 block text-base sm:text-lg font-bold text-white transition-colors hover:text-white/80"
-                >
-                  +971 50 833 2542
-                </a>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-neutral-600">
+                        Office
+                      </p>
+                      <p className="mt-1 text-sm font-medium leading-relaxed text-neutral-900">
+                        Plot number 565-0, Al Gurg Building, Karama,
+                        <br />
+                        Al Karama, UAE
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-white">
-                  Email
-                </p>
-                <a
-                  href="mailto:finance@nomadaurelia.com"
-                  className="mt-1.5 block text-base sm:text-lg font-bold text-white transition-colors hover:text-white/80"
-                >
-                  finance@nomadaurelia.com
-                </a>
-              </div>
-
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-white">
-                  Office
-                </p>
-                <p className="mt-1.5 max-w-sm text-sm sm:text-base font-medium leading-relaxed text-neutral-200">
-                  Plot number 565-0, Al Gurg Building, Karama,
-                  <br />
-                  Al Karama, UAE
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

@@ -7,7 +7,6 @@ import { ServicesSection } from "@/components/home/services-section";
 import { JurisdictionSection } from "@/components/home/jurisdiction-section";
 import { WhyChooseSection } from "@/components/home/why-choose-section";
 import { ConsultationSection } from "@/components/home/consultation-section";
-import { FaqSection } from "@/components/home/faq-section";
 import { ContactSection } from "@/components/home/contact-section";
 
 export default function HomePage() {
@@ -21,7 +20,6 @@ export default function HomePage() {
       <JurisdictionSection />
       <WhyChooseSection />
       <ConsultationSection />
-      <FaqSection />
       <ContactSection />
       <Footer />
     </main>

@@ -1,102 +1,95 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
+import { LinkButton } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export const services = [
   {
-    category: "Mainland",
-    title: "Mainland Company Formation",
+    category: "Entity Setup",
+    title: "Company Formation",
     description:
-      "Assistance with company registration and licensing through the relevant UAE mainland authorities and necessary approvals.",
+      "A tailored route through mainland, free zone and offshore business structures, licensing and documentation.",
     image: "/services/Dubai Office Consultation with Skyline View.png",
   },
   {
-    category: "Free Zone",
-    title: "Free Zone Company Formation",
+    category: "Financial Care",
+    title: "Banking & Financial Solutions",
     description:
-      "Business setup solutions across leading UAE free zones, including DMCC, DAFZA, Meydan, IFZA, SHAMS, RAKEZ, RAK ICC, JAFZA, ADGM, and DIFC, subject to jurisdictional eligibility.",
+      "Strategic support for corporate and personal bank accounts, KYC clearance, digital banking, and international transactions.",
     image: "/services/High-Rise Business Strategy Session.png",
   },
   {
-    category: "Offshore",
-    title: "Offshore Company Formation",
+    category: "Fiscal Advisory",
+    title: "Accounting & Tax Services",
     description:
-      "Support for establishing offshore entities for suitable international business activities and asset-holding purposes.",
+      "Reliable corporate tax advisory, VAT registration, bookkeeping and structured audit compliance built for UAE regulations.",
     image: "/services/Global Strategy in the Executive Office.png",
   },
   {
-    category: "Branding & Identity",
-    title: "Trade Name Reservation",
+    category: "Risk & Governance",
+    title: "Corporate Compliance & Advisory",
     description:
-      "Guidance on selecting and reserving an appropriate business name in accordance with applicable regulations.",
+      "Proactive guidance through regulatory frameworks, AML & UBO compliance, reporting obligations, and corporate governance.",
     image: "/services/Design Planning at a Modern Workspace.png",
   },
   {
-    category: "Licensing Scope",
-    title: "Business Activity Selection",
+    category: "Operational Care",
+    title: "Concierge & PRO Services",
     description:
-      "Assistance in identifying suitable business activities based on your business objectives and licensing requirements.",
-    image: "/services/Architectural Vision in the Skyline.png",
-  },
-  {
-    category: "Approvals & Issuance",
-    title: "Trade License Processing",
-    description:
-      "Support with the preparation and submission of documentation required for license issuance.",
+      "Dedicated PRO and visa services, document attestation, relocation support, and seamless administrative assistance.",
     image: "/services/Business Partnership Contract Signing.png",
-  },
-  {
-    category: "Corporate Structure",
-    title: "Shareholder Documentation",
-    description:
-      "Assistance with shareholder details, incorporation documents, and related corporate paperwork.",
-    image: "/services/Focused Professional at a City Office Desk.png",
-  },
-  {
-    category: "Regulatory Care",
-    title: "Corporate Compliance Support",
-    description:
-      "Guidance on applicable UAE company regulations, licensing obligations, and ongoing compliance requirements.",
-    image: "/services/Focused Businessman Analyzing Dashboard Charts.png",
   },
 ];
 
 export function ServicesSection() {
-  const [startIndex, setStartIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: false,
+    containScroll: "trimSnaps",
+    dragFree: false,
+  });
 
-  const total = services.length;
-  // On large screens, 4 cards are shown at a time
-  const maxStartIndex = Math.max(0, total - 4);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setStartIndex((prev) => (prev >= maxStartIndex ? 0 : prev + 1));
-  }, [maxStartIndex]);
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-  const prevSlide = useCallback(() => {
-    setStartIndex((prev) => (prev <= 0 ? maxStartIndex : prev - 1));
-  }, [maxStartIndex]);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
-  // Gentle auto-advance every 5.5s (pauses on hover)
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5500);
-    return () => clearInterval(interval);
-  }, [isPaused, nextSlide]);
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   return (
     <section
       id="services"
       className="relative flex min-h-[720px] sm:min-h-[820px] lg:min-h-[900px] flex-col justify-between overflow-hidden pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-20 lg:pt-28 text-white bg-[#062638]"
     >
-      {/* Background Image with high-contrast dark overlay */}
+      {/* Background Image with top-left black gradient overlay */}
       <Image
         src="/banner/b3.png"
         alt="Nomad Aurelia Services Background"
@@ -104,127 +97,109 @@ export function ServicesSection() {
         priority={false}
         className="object-cover object-center"
       />
-      {/* Top-left black gradient overlay */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/90 via-black/50 to-transparent"
       />
+
       {/* Top Header Area */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-2xl">
+          <ScrollReveal delay={0.05} direction="up" className="max-w-2xl">
             <SectionBadge label="What we handle" theme="dark" />
 
             <h2 className="mt-5 font-serif text-4xl leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
               The business essentials, connected under one roof.
             </h2>
-          </div>
+          </ScrollReveal>
 
-          <div className="flex items-center gap-4">
-            {/* Arrows */}
+          {/* Navigation Controls */}
+          <ScrollReveal delay={0.15} direction="up" className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={prevSlide}
-                aria-label="Previous services"
-                className="group flex h-11 w-11 items-center justify-center rounded-md border border-white/15 bg-white text-black transition-all hover:border-white/40 hover:bg-white/90 active:scale-95"
+                onClick={scrollPrev}
+                disabled={!canScrollPrev}
+                aria-label="Previous service"
+                className={`group flex h-11 w-11 items-center justify-center rounded-md border transition-all active:scale-95 ${canScrollPrev
+                  ? "border-white/20 bg-white text-black hover:bg-white/90"
+                  : "border-white/10 bg-white/20 text-white/40 cursor-not-allowed"
+                  }`}
               >
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
               </button>
               <button
                 type="button"
-                onClick={nextSlide}
-                aria-label="Next services"
-                className="group flex h-11 w-11 items-center justify-center rounded-md border border-white/15 bg-white text-black transition-all hover:border-white/40 hover:bg-white/90 active:scale-95"
+                onClick={scrollNext}
+                disabled={!canScrollNext}
+                aria-label="Next service"
+                className={`group flex h-11 w-11 items-center justify-center rounded-md border transition-all active:scale-95 ${canScrollNext
+                  ? "border-white/20 bg-white text-black hover:bg-white/90"
+                  : "border-white/10 bg-white/20 text-white/40 cursor-not-allowed"
+                  }`}
               >
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
 
-      {/* Bottom Cards Carousel Area */}
+      {/* Embla Carousel Viewport */}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-16 sm:pt-20 lg:px-8">
-        <div
-          ref={containerRef}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          className="relative overflow-hidden"
-        >
-          {/* Track sliding horizontally */}
-          <motion.div
-            className="flex gap-3 sm:gap-3.5 lg:gap-4"
-            animate={{
-              x: `calc(-${startIndex} * (100% / 4 + 1rem / 4))`,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 30,
-            }}
-            style={{
-              width: "100%",
-            }}
-          >
-            {services.map((service) => {
-              return (
-                <a
-                  key={service.title}
-                  href="#contact"
-                  className="group relative flex min-w-[270px] sm:min-w-[300px] md:min-w-[calc(50%-0.5rem)] lg:min-w-[calc(25%-0.75rem)] flex-col cursor-pointer overflow-hidden rounded-md transition-transform duration-300"
-                >
-                  {/* Image container: 4:3 aspect ratio, unboxed/clean */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      sizes="(max-width: 640px) 270px, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Text below image with solid black background - fixed height for uniform card alignment */}
-                  <div className="flex flex-1 flex-col justify-between text-left bg-black p-5 sm:p-6 transition-colors duration-300 group-hover:bg-[#0c0c0c] min-h-[195px] sm:min-h-[215px]">
-                    <div>
-                      {/* Small category / brand eyebrow */}
-                      {/* <span className="text-xs font-bold uppercase tracking-wider text-white">
-                        {service.category}
-                      </span> */}
-
-                      {/* Bold title - fixed height across 2 lines so descriptions align */}
-                      <h3 className="mt-2 text-lg sm:text-xl font-bold tracking-tight text-white leading-snug line-clamp-2 h-[3.2rem] sm:h-[3.5rem]">
-                        {service.title}
-                      </h3>
+        <ScrollReveal delay={0.2} direction="up" distance={24}>
+          <div ref={emblaRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
+            <div className="flex gap-3 sm:gap-3.5 lg:gap-4">
+              {services.map((service) => {
+                return (
+                  <div
+                    key={service.title}
+                    className="relative flex-none w-[280px] sm:w-[320px] md:w-[calc(50%-0.5rem)] lg:w-[calc(25%-0.75rem)] flex flex-col overflow-hidden rounded-md transition-transform duration-300"
+                  >
+                    {/* Image container: 4:3 aspect ratio */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        sizes="(max-width: 640px) 280px, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
+                      />
                     </div>
 
-                    {/* 2-line description */}
-                    <p className="mt-2 line-clamp-2 text-sm font-medium leading-relaxed text-neutral-300">
-                      {service.description}
-                    </p>
-                  </div>
-                </a>
-              );
-            })}
-          </motion.div>
-        </div>
+                    {/* Text below image with white background */}
+                    <div className="flex flex-1 flex-col justify-between text-left bg-white p-5 sm:p-6 min-h-[220px] sm:min-h-[235px]">
+                      <div>
+                        {/* Bold title */}
+                        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-900 leading-snug line-clamp-2 h-[3.2rem] sm:h-[3.5rem]">
+                          {service.title}
+                        </h3>
 
-        {/* Mobile carousel indicator dots */}
-        <div className="mt-10 flex justify-center gap-2 md:hidden">
-          {Array.from({ length: total }).map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setStartIndex(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${i === startIndex
-                ? "w-6 bg-white"
-                : "w-2 bg-white/20"
-                }`}
-            />
-          ))}
-        </div>
+                        {/* 2-line description */}
+                        <p className="mt-2 line-clamp-2 text-sm font-medium leading-relaxed text-neutral-600">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      {/* View More Services / Scope action button */}
+                      <div className="mt-4 pt-3 border-t border-neutral-100">
+                        <LinkButton
+                          href="#services"
+                          variant="secondary"
+                          size="sm"
+                          className="w-full justify-between font-semibold border-neutral-800 bg-neutral-50 hover:bg-neutral-100 text-neutral-900 group/btn"
+                        >
+                          <span className="text-left text-xs">View service scope</span>
+                          <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </LinkButton>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
