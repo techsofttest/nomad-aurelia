@@ -1,26 +1,32 @@
-import { ArrowUpRight } from "lucide-react";
+import {
+  Compass,
+  Layers,
+  Building2,
+  Rocket,
+  ArrowUpRight,
+} from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 
 const steps = [
   {
-    number: "01",
     title: "Understand",
     text: "We start with your objectives, activities, ownership and plans.",
+    icon: Compass,
   },
   {
-    number: "02",
     title: "Structure",
     text: "We identify the practical route through the available UAE options.",
+    icon: Layers,
   },
   {
-    number: "03",
     title: "Establish",
     text: "We coordinate documentation, licensing and formation requirements.",
+    icon: Building2,
   },
   {
-    number: "04",
     title: "Activate",
     text: "We support banking, tax, visas and the operational details.",
+    icon: Rocket,
   },
 ];
 
@@ -28,43 +34,48 @@ export function ApproachSection() {
   return (
     <section id="approach" className="bg-[var(--color-cream)] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
-          <div>
-            <SectionBadge label="A clearer journey" theme="light" />
+        {/* Top Centered Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionBadge
+            label="A clearer journey"
+            theme="light"
+            className="justify-center"
+          />
 
-            <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-[var(--color-ink)] sm:text-6xl">
-              From the first question to a business that is ready to move.
-            </h2>
+          <h2 className="mt-5 font-serif text-4xl font-semibold leading-[1.02] tracking-[-0.035em] text-neutral-950 sm:text-5xl lg:text-6xl">
+            From the first question to a business that is ready to move.
+          </h2>
+        </div>
 
-            <p className="mt-7 max-w-md text-base leading-7 text-[var(--color-muted)]">
-              We coordinate the important pieces so you can spend less time
-              navigating processes and more time building the business.
-            </p>
-          </div>
+        {/* 4 Cards Aligned Below Header in a Single Row on Large Screens */}
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step) => {
+            const Icon = step.icon;
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            {steps.map((step) => (
+            return (
               <div
-                key={step.number}
-                className="rounded-2xl bg-white p-7 transition hover:-translate-y-1"
+                key={step.title}
+                className="group relative flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-serif text-4xl text-[var(--color-gold)]">
-                    {step.number}
-                  </span>
-                  <ArrowUpRight className="h-5 w-5 text-[var(--color-muted)]" />
+                <div>
+                  {/* Top Bar with Icon */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-md bg-white text-neutral-900 transition-colors group-hover:bg-neutral-950 group-hover:text-white">
+                      <Icon className="h-9 w-9 stroke-[1.85]" />
+                    </div>
+                  </div>
+
+                  <h3 className="mt-7 text-xl font-bold tracking-tight text-neutral-950">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-3 text-base font-medium leading-relaxed text-neutral-800">
+                    {step.text}
+                  </p>
                 </div>
-
-                <h3 className="mt-12 text-lg font-semibold text-[var(--color-ink)]">
-                  {step.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
-                  {step.text}
-                </p>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

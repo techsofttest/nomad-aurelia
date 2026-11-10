@@ -10,6 +10,30 @@ import {
 } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
 import { FloatingGlobeLines } from "@/components/ui/floating-lines-background";
+import { HeroTrustVerticalCarousel } from "@/components/ui/hero-trust-carousel";
+
+const trustItems = [
+  {
+    number: "01",
+    title: "Founder-first",
+    text: "Guidance designed around your objectives",
+  },
+  {
+    number: "02",
+    title: "Connected support",
+    text: "Formation to ongoing corporate care",
+  },
+  {
+    number: "03",
+    title: "UAE expertise",
+    text: "Practical knowledge of the local landscape",
+  },
+  {
+    number: "04",
+    title: "Clear communication",
+    text: "Straightforward answers and next steps",
+  },
+];
 
 const tags = [
   { name: "Mainland", icon: Building2 },
@@ -29,7 +53,7 @@ export function AboutSection() {
       <FloatingGlobeLines color="#12394a" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-8">
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between gap-12">
           <div>
             <SectionBadge label="About Nomad Aurelia" theme="light" />
 
@@ -37,6 +61,13 @@ export function AboutSection() {
               A UAE-based business consultancy supporting entrepreneurs,
               investors and established businesses.
             </p>
+          </div>
+
+          <div className="pt-4">
+            <HeroTrustVerticalCarousel
+              items={trustItems}
+              intervalMs={3200}
+            />
           </div>
         </div>
 

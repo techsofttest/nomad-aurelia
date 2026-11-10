@@ -24,11 +24,17 @@ export function HeroSection() {
     <section className="relative flex min-h-[640px] flex-col justify-between overflow-hidden pt-28 sm:min-h-[720px] sm:pt-32 lg:aspect-[16/12] lg:min-h-[820px] lg:pt-40">
       {/* Background Image: Desert Dusk Conversation */}
       <Image
-        src="/hero/Desert Dusk Conversation2.png"
+        src="/hero/Desert Dusk Conversation3.png"
         alt="Desert Dusk Conversation background"
         fill
         priority
         className="object-cover object-center"
+      />
+
+      {/* Dark overlay covering the whole image for readability */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/85 via-black/5 to-transparent"
       />
 
       {/* Centered Content */}
@@ -41,7 +47,7 @@ export function HeroSection() {
         />
 
         {/* Headline with business owner profile pictures inline */}
-        <h1 className="mx-auto max-w-4xl font-serif text-5xl uppercase leading-[1.05] tracking-[-0.035em] text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-[4rem] lg:leading-[1.02]">
+        <h1 className="mx-auto max-w-4xl font-bold font-serif text-5xl uppercase leading-[1.05] tracking-[-0.035em] text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-[4rem] lg:leading-[1.02]">
           Build your business{" "}
           <span className="mx-1.5 my-1 inline-flex items-center align-middle">
             <span className="flex -space-x-3 overflow-hidden rounded-full border-2 border-white/60 bg-white/20 p-0.5 backdrop-blur-sm">
@@ -98,8 +104,12 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Vertical Animated Stats Carousel at the left edge */}
-      <HeroStatsVerticalCarousel items={stats} intervalMs={2800} />
+      {/* Bottom Area: Stats Carousel on bottom-left, Trust Carousel on bottom-right */}
+      <div className="relative z-10 w-full px-6 pb-8 pt-4 sm:pb-10 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+          <HeroStatsVerticalCarousel items={stats} intervalMs={2800} />
+        </div>
+      </div>
     </section>
   );
 }

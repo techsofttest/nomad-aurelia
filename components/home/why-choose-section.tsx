@@ -30,26 +30,26 @@ export function WhyChooseSection() {
         <div className="max-w-4xl">
           <SectionBadge label="Why clients choose Nomad" theme="light" />
 
-          <h2 className="mt-5 font-serif text-5xl leading-[0.94] tracking-[-0.035em] text-[var(--color-ink)] sm:text-6xl lg:text-7xl">
+          <h2 className="mt-5 font-serif text-5xl font-semibold leading-[0.94] tracking-[-0.035em] text-neutral-950 sm:text-6xl lg:text-7xl">
             Trust is built by making complicated decisions feel clear.
           </h2>
         </div>
 
-        <div className="mt-16 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((item) => (
             <div
               key={item.number}
-              className="rounded-2xl bg-white p-7"
+              className="rounded-md bg-white p-7 transition-colors hover:bg-neutral-50"
             >
-              <span className="font-serif text-4xl text-[var(--color-gold)]">
+              <span className="font-sans text-4xl font-bold tracking-tight text-[#b87d3b]">
                 {item.number}
               </span>
 
-              <h3 className="mt-12 text-lg font-semibold text-[var(--color-ink)]">
+              <h3 className="mt-10 text-xl font-bold tracking-tight text-neutral-950">
                 {item.title}
               </h3>
 
-              <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
+              <p className="mt-3 text-sm font-medium leading-relaxed text-neutral-800">
                 {item.text}
               </p>
             </div>

@@ -28,11 +28,9 @@ export function HeroStatsVerticalCarousel({
   }, [items.length, intervalMs]);
 
   return (
-    <div className="relative z-10 w-full px-6 pb-8 pt-4 sm:pb-10 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="relative flex flex-col justify-center text-left">
-          {/* Vertical carousel items */}
-          <div className="flex flex-col gap-2.5">
+    <div className="relative flex flex-col justify-center text-left">
+      {/* Vertical carousel items */}
+      <div className="flex flex-col gap-2.5">
             {items.map((item, index) => {
               const isActive = index === activeIndex;
 
@@ -70,7 +68,7 @@ export function HeroStatsVerticalCarousel({
                   <span
                     className={`font-sans font-bold tracking-tight transition-all duration-300 min-w-[48px] ${
                       isActive
-                        ? "text-2xl sm:text-3xl text-white drop-shadow"
+                        ? "text-2xl sm:text-3xl text-white"
                         : "text-lg sm:text-xl text-white/50"
                     }`}
                   >
@@ -81,7 +79,7 @@ export function HeroStatsVerticalCarousel({
                   <span
                     className={`font-medium transition-all duration-300 ${
                       isActive
-                        ? "text-sm sm:text-base text-white drop-shadow-sm font-semibold"
+                        ? "text-sm sm:text-base text-white font-semibold"
                         : "text-xs sm:text-sm text-white/40"
                     }`}
                   >
@@ -90,8 +88,6 @@ export function HeroStatsVerticalCarousel({
                 </motion.div>
               );
             })}
-          </div>
-        </div>
       </div>
     </div>
   );

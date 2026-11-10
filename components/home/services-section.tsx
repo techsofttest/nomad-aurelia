@@ -1,234 +1,229 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
-import {
-  ArrowRight,
-  Banknote,
-  Building2,
-  Check,
-  Landmark,
-  ShieldCheck,
-  UserRound,
-} from "lucide-react";
+import { motion } from "motion/react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SectionBadge } from "@/components/ui/section-badge";
-import { LinkButton } from "@/components/ui/button";
 
 export const services = [
   {
-    number: "01",
-    title: "Company formation",
-    shortTitle: "Build your foundation",
+    category: "Mainland",
+    title: "Mainland Company Formation",
     description:
-      "A tailored route through mainland, free zone and offshore structures, licensing and corporate documentation.",
-    icon: Building2,
-    image: "/images/company-formation.jpg",
-    items: [
-      "Mainland company formation",
-      "Free zone company formation",
-      "Offshore company formation",
-      "Trade name reservation",
-      "Business activity selection",
-      "Trade license processing",
-      "Shareholder documentation",
-      "Corporate compliance support",
-    ],
+      "Assistance with company registration and licensing through the relevant UAE mainland authorities and necessary approvals.",
+    image: "/services/Dubai Office Consultation with Skyline View.png",
   },
   {
-    number: "02",
-    title: "Banking & financial solutions",
-    shortTitle: "Move money with confidence",
+    category: "Free Zone",
+    title: "Free Zone Company Formation",
     description:
-      "Practical support for corporate and personal banking, KYC, digital banking and international payment requirements.",
-    icon: Landmark,
-    image: "/images/banking.jpg",
-    items: [
-      "Corporate bank accounts",
-      "Personal bank accounts",
-      "KYC & compliance support",
-      "Digital banking",
-      "Merchant services",
-      "International fund transfers",
-    ],
+      "Business setup solutions across leading UAE free zones, including DMCC, DAFZA, Meydan, IFZA, SHAMS, RAKEZ, RAK ICC, JAFZA, ADGM, and DIFC, subject to jurisdictional eligibility.",
+    image: "/services/High-Rise Business Strategy Session.png",
   },
   {
-    number: "03",
-    title: "Accounting & tax",
-    shortTitle: "Keep your numbers right",
+    category: "Offshore",
+    title: "Offshore Company Formation",
     description:
-      "Reliable accounting and tax support designed around your business structure, reporting needs and compliance obligations.",
-    icon: Banknote,
-    image: "/images/tax.jpg",
-    items: [
-      "VAT registration",
-      "VAT return preparation",
-      "Corporate tax registration",
-      "Corporate tax advisory",
-      "Accounting & bookkeeping",
-      "Management reporting",
-      "Audit support",
-    ],
+      "Support for establishing offshore entities for suitable international business activities and asset-holding purposes.",
+    image: "/services/Global Strategy in the Executive Office.png",
   },
   {
-    number: "04",
-    title: "Corporate compliance & advisory",
-    shortTitle: "Reduce complexity",
+    category: "Branding & Identity",
+    title: "Trade Name Reservation",
     description:
-      "Strategic guidance across regulatory requirements, governance, risk management, AML, UBO and ongoing obligations.",
-    icon: ShieldCheck,
-    image: "/images/compliance.jpg",
-    items: [
-      "AML compliance",
-      "UBO declarations",
-      "Regulatory reporting",
-      "Economic substance support",
-      "Corporate governance",
-      "Risk management",
-    ],
+      "Guidance on selecting and reserving an appropriate business name in accordance with applicable regulations.",
+    image: "/services/Design Planning at a Modern Workspace.png",
   },
   {
-    number: "05",
-    title: "Concierge & PRO services",
-    shortTitle: "Make the move easier",
+    category: "Licensing Scope",
+    title: "Business Activity Selection",
     description:
-      "Personalised administrative and relocation support for entrepreneurs, executives, investors and their families.",
-    icon: UserRound,
-    image: "/images/concierge.jpg",
-    items: [
-      "PRO & visa services",
-      "Emirates ID processing",
-      "Document attestation",
-      "Certified translation",
-      "Travel assistance",
-      "Accommodation assistance",
-      "Relocation support",
-      "Administrative assistance",
-    ],
+      "Assistance in identifying suitable business activities based on your business objectives and licensing requirements.",
+    image: "/services/Architectural Vision in the Skyline.png",
+  },
+  {
+    category: "Approvals & Issuance",
+    title: "Trade License Processing",
+    description:
+      "Support with the preparation and submission of documentation required for license issuance.",
+    image: "/services/Business Partnership Contract Signing.png",
+  },
+  {
+    category: "Corporate Structure",
+    title: "Shareholder Documentation",
+    description:
+      "Assistance with shareholder details, incorporation documents, and related corporate paperwork.",
+    image: "/services/Focused Professional at a City Office Desk.png",
+  },
+  {
+    category: "Regulatory Care",
+    title: "Corporate Compliance Support",
+    description:
+      "Guidance on applicable UAE company regulations, licensing obligations, and ongoing compliance requirements.",
+    image: "/services/Focused Businessman Analyzing Dashboard Charts.png",
   },
 ];
 
 export function ServicesSection() {
-  const [activeService, setActiveService] = useState(0);
-  const currentService = services[activeService];
+  const [startIndex, setStartIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const total = services.length;
+  // On large screens, 4 cards are shown at a time
+  const maxStartIndex = Math.max(0, total - 4);
+
+  const nextSlide = useCallback(() => {
+    setStartIndex((prev) => (prev >= maxStartIndex ? 0 : prev + 1));
+  }, [maxStartIndex]);
+
+  const prevSlide = useCallback(() => {
+    setStartIndex((prev) => (prev <= 0 ? maxStartIndex : prev - 1));
+  }, [maxStartIndex]);
+
+  // Gentle auto-advance every 5.5s (pauses on hover)
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
 
   return (
-    <section id="services" className="bg-[var(--color-ink)] py-24 text-white lg:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div>
+    <section
+      id="services"
+      className="relative flex min-h-[720px] sm:min-h-[820px] lg:min-h-[900px] flex-col justify-between overflow-hidden pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-20 lg:pt-28 text-white bg-[#062638]"
+    >
+      {/* Background Image with high-contrast dark overlay */}
+      <Image
+        src="/banner/b3.png"
+        alt="Nomad Aurelia Services Background"
+        fill
+        priority={false}
+        className="object-cover object-center"
+      />
+      {/* Top-left black gradient overlay */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-br from-black/90 via-black/50 to-transparent"
+      />
+      {/* Top Header Area */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <div className="max-w-2xl">
             <SectionBadge label="What we handle" theme="dark" />
 
-            <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[0.92] tracking-[-0.035em] sm:text-6xl">
+            <h2 className="mt-5 font-serif text-4xl leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
               The business essentials, connected under one roof.
             </h2>
           </div>
 
-          <p className="max-w-xl text-base leading-7 text-white/70">
-            Choose the area where you need support. Then explore the
-            individual services that sit inside it.
-          </p>
-        </div>
-
-        <div className="mt-16 grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-          <div className="space-y-2">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              const active = activeService === index;
-
-              return (
-                <button
-                  key={service.number}
-                  type="button"
-                  onClick={() => setActiveService(index)}
-                  className={`group flex w-full items-center gap-5 rounded-2xl p-5 text-left transition ${active
-                      ? "bg-[var(--color-gold)] text-[var(--color-ink)]"
-                      : "bg-white/5 text-white hover:bg-white/10"
-                    }`}
-                >
-                  <span
-                    className={`font-serif text-3xl ${active
-                        ? "text-[var(--color-ink)]"
-                        : "text-[var(--color-gold)]"
-                      }`}
-                  >
-                    {service.number}
-                  </span>
-
-                  <span className="flex-1">
-                    <span className="block text-base font-semibold">
-                      {service.title}
-                    </span>
-                    <span
-                      className={`mt-1 block text-sm ${active ? "text-[var(--color-ink-soft)]" : "text-white/60"
-                        }`}
-                    >
-                      {service.shortTitle}
-                    </span>
-                  </span>
-
-                  <Icon className="h-5 w-5" />
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="overflow-hidden rounded-[2rem] bg-white text-[var(--color-ink)]">
-            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="relative min-h-[420px]">
-                <Image
-                  src={currentService.image}
-                  alt={currentService.title}
-                  fill
-                  className="object-cover"
-                />
-
-                <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-[var(--color-ink)] p-5 text-white">
-                  <p className="text-xs font-semibold text-[var(--color-gold)]">
-                    {currentService.number} · Service area
-                  </p>
-                  <p className="mt-2 font-serif text-3xl leading-none">
-                    {currentService.shortTitle}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-7 sm:p-10">
-                <p className="text-sm font-semibold text-[var(--color-gold)]">
-                  {currentService.number}
-                </p>
-
-                <h3 className="mt-4 font-serif text-4xl leading-none tracking-[-0.03em]">
-                  {currentService.title}
-                </h3>
-
-                <p className="mt-6 text-sm leading-6 text-[var(--color-muted)]">
-                  {currentService.description}
-                </p>
-
-                <div className="mt-8 grid gap-3">
-                  {currentService.items.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-3 rounded-xl bg-[var(--color-cream)] px-4 py-3"
-                    >
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                      <span className="text-sm font-medium">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <LinkButton
-                  href="#contact"
-                  variant="ternary"
-                  size="md"
-                  className="mt-8 self-start"
-                >
-                  Discuss this service
-                  <ArrowRight className="h-4 w-4" />
-                </LinkButton>
-              </div>
+          <div className="flex items-center gap-4">
+            {/* Arrows */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={prevSlide}
+                aria-label="Previous services"
+                className="group flex h-11 w-11 items-center justify-center rounded-md border border-white/15 bg-white text-black transition-all hover:border-white/40 hover:bg-white/90 active:scale-95"
+              >
+                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+              </button>
+              <button
+                type="button"
+                onClick={nextSlide}
+                aria-label="Next services"
+                className="group flex h-11 w-11 items-center justify-center rounded-md border border-white/15 bg-white text-black transition-all hover:border-white/40 hover:bg-white/90 active:scale-95"
+              >
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Bottom Cards Carousel Area */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-16 sm:pt-20 lg:px-8">
+        <div
+          ref={containerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="relative overflow-hidden"
+        >
+          {/* Track sliding horizontally */}
+          <motion.div
+            className="flex gap-3 sm:gap-3.5 lg:gap-4"
+            animate={{
+              x: `calc(-${startIndex} * (100% / 4 + 1rem / 4))`,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 30,
+            }}
+            style={{
+              width: "100%",
+            }}
+          >
+            {services.map((service) => {
+              return (
+                <a
+                  key={service.title}
+                  href="#contact"
+                  className="group relative flex min-w-[270px] sm:min-w-[300px] md:min-w-[calc(50%-0.5rem)] lg:min-w-[calc(25%-0.75rem)] flex-col cursor-pointer overflow-hidden rounded-md transition-transform duration-300"
+                >
+                  {/* Image container: 4:3 aspect ratio, unboxed/clean */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 640px) 270px, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Text below image with solid black background - fixed height for uniform card alignment */}
+                  <div className="flex flex-1 flex-col justify-between text-left bg-black p-5 sm:p-6 transition-colors duration-300 group-hover:bg-[#0c0c0c] min-h-[195px] sm:min-h-[215px]">
+                    <div>
+                      {/* Small category / brand eyebrow */}
+                      {/* <span className="text-xs font-bold uppercase tracking-wider text-white">
+                        {service.category}
+                      </span> */}
+
+                      {/* Bold title - fixed height across 2 lines so descriptions align */}
+                      <h3 className="mt-2 text-lg sm:text-xl font-bold tracking-tight text-white leading-snug line-clamp-2 h-[3.2rem] sm:h-[3.5rem]">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    {/* 2-line description */}
+                    <p className="mt-2 line-clamp-2 text-sm font-medium leading-relaxed text-neutral-300">
+                      {service.description}
+                    </p>
+                  </div>
+                </a>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* Mobile carousel indicator dots */}
+        <div className="mt-10 flex justify-center gap-2 md:hidden">
+          {Array.from({ length: total }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setStartIndex(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all ${i === startIndex
+                ? "w-6 bg-white"
+                : "w-2 bg-white/20"
+                }`}
+            />
+          ))}
         </div>
       </div>
     </section>

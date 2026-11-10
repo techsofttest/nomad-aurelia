@@ -20,7 +20,19 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  // Detect scroll to toggle sticky styling & alternate logo
+  useEffect(() => {
+    function handleScroll() {
+      setIsScrolled(window.scrollY > 40);
+    }
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -40,7 +52,12 @@ export function Header() {
   }, []);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50 text-white">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 text-white ${isScrolled
+        ? "bg-[#062638]/95 backdrop-blur-md shadow-md py-2"
+        : "bg-transparent py-0"
+        }`}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:h-20 lg:px-8">
         {/* Left: Brand Logo */}
         <a
@@ -49,12 +66,15 @@ export function Header() {
           aria-label="Nomad Aurelia"
         >
           <Image
-            src="/logo/logo-white.svg"
+            src={isScrolled ? "/logo/logo-sec2.svg" : "/logo/logo-white.svg"}
             alt="Nomad Aurelia Logo"
             width={1324}
             height={1781}
             priority
-            className="h-24 w-auto max-w-none origin-top-left object-contain sm:h-28 lg:h-32 translate-y-3 sm:translate-y-4 lg:translate-y-8"
+            className={`w-auto object-contain transition-all duration-300 ${isScrolled
+              ? "h-12 sm:h-14 lg:h-16 translate-y-0"
+              : "h-24 sm:h-28 lg:h-32 translate-y-3 sm:translate-y-4 lg:translate-y-8"
+              }`}
           />
         </a>
 

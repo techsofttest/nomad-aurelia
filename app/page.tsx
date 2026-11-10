@@ -1,7 +1,6 @@
 import { Header } from "@/components/global/header";
 import { Footer } from "@/components/global/footer";
 import { HeroSection } from "@/components/home/hero-section";
-import { TrustStrip } from "@/components/home/trust-strip";
 import { AboutSection } from "@/components/home/about-section";
 import { ApproachSection } from "@/components/home/approach-section";
 import { ServicesSection } from "@/components/home/services-section";
@@ -16,10 +15,9 @@ export default function HomePage() {
     <main className="overflow-hidden">
       <Header />
       <HeroSection />
-      {/* <TrustStrip /> */}
       <AboutSection />
-      <ApproachSection />
       <ServicesSection />
+      <ApproachSection />
       <JurisdictionSection />
       <WhyChooseSection />
       <ConsultationSection />
