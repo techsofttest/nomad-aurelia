@@ -7,15 +7,15 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const jurisdictions = [
   {
     title: "Mainland",
-    text: "For businesses that need a flexible operating presence across the UAE.",
+    text: "Company registration and licensing through relevant UAE mainland authorities and necessary approvals.",
   },
   {
     title: "Free Zone",
-    text: "For founders looking for a specialised jurisdiction aligned with their activity.",
+    text: "Setup across leading UAE free zones including DMCC, DAFZA, Meydan, IFZA, SHAMS, RAKEZ, ADGM, and DIFC.",
   },
   {
     title: "Offshore",
-    text: "For suitable international business and asset-holding requirements.",
+    text: "Establishing offshore entities for suitable international business activities and asset-holding purposes.",
   },
 ];
 
@@ -26,18 +26,17 @@ export function JurisdictionSection() {
         {/* Top Centered Header */}
         <ScrollReveal delay={0.05} direction="up" className="mx-auto max-w-3xl text-center">
           <SectionBadge
-            label="Finding the right route"
+            label="Company Formation"
             theme="light"
             className="justify-center"
           />
 
           <h2 className="mt-5 font-serif text-4xl leading-[1.02] tracking-[-0.035em] text-neutral-950 sm:text-5xl lg:text-6xl font-semibold">
-            There is no single best way to establish a business in the UAE.
+            Establishing your presence across the UAE through tailored business setup solutions.
           </h2>
 
           <p className="mx-auto mt-6 max-w-xl text-base font-medium leading-7 text-neutral-800">
-            The right structure depends on what you do, where you operate, who
-            owns the business and where you want to take it next.
+            From mainland and free zone establishments to offshore solutions, we aim to simplify the process of establishing and growing a business in the UAE.
           </p>
         </ScrollReveal>
 
@@ -54,6 +53,7 @@ export function JurisdictionSection() {
               src="/jurisdiction-section/Executive Skyline Business Meeting.png"
               alt="Dubai business district"
               fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-center"
             />
             {/* Soft badge overlay */}

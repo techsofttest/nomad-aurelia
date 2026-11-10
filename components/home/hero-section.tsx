@@ -29,6 +29,7 @@ export function HeroSection() {
         alt="Desert Dusk Conversation background"
         fill
         priority
+        sizes="100vw"
         className="object-cover object-center"
       />
 

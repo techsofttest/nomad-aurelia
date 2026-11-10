@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   const [year, setYear] = useState<number | null>(null);
@@ -63,158 +64,90 @@ export function Footer() {
 
           {/* Service Column 1: Company Formation */}
           <div>
-            <p className="text-sm font-bold text-white">
-              Company Formation
-            </p>
+            <a
+              href="#services"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline underline-offset-4 transition-colors"
+            >
+              <span>Company Formation</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/70" />
+            </a>
 
-            <ul className="mt-4 space-y-2.5 text-xs font-medium text-neutral-300">
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Mainland Company Formation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Free Zone Company Formation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Offshore Company Formation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Trade Name Reservation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Business Activity Selection
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Trade License Processing
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Shareholder Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Corporate Compliance Support
-                </a>
-              </li>
+            <ul className="mt-4 space-y-2 text-xs font-normal text-neutral-300">
+              <li>Mainland Company Formation</li>
+              <li>Free Zone Company Formation</li>
+              <li>Offshore Company Formation</li>
+              <li>Trade Name Reservation</li>
+              <li>Business Activity Selection</li>
+              <li>Trade License Processing</li>
+              <li>Shareholder Documentation</li>
+              <li>Corporate Compliance Support</li>
             </ul>
           </div>
 
           {/* Service Column 2: Banking & Financial Solutions */}
           <div>
-            <p className="text-sm font-bold text-white">
-              Banking & Finance
-            </p>
+            <a
+              href="#services"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline underline-offset-4 transition-colors"
+            >
+              <span>Banking & Finance</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/70" />
+            </a>
 
-            <ul className="mt-4 space-y-2.5 text-xs font-medium text-neutral-300">
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Corporate & Personal Bank Accounts
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  KYC & Compliance Support
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Digital Banking & Payment Solutions
-                </a>
-              </li>
+            <ul className="mt-4 space-y-2 text-xs font-normal text-neutral-300">
+              <li>Corporate & Personal Bank Accounts</li>
+              <li>KYC & Compliance Support</li>
+              <li>Digital Banking & Payment Solutions</li>
             </ul>
 
-            <p className="mt-8 text-sm font-bold text-white">
-              Accounting & Tax
-            </p>
+            <a
+              href="#services"
+              className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline underline-offset-4 transition-colors"
+            >
+              <span>Accounting & Tax</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/70" />
+            </a>
 
-            <ul className="mt-4 space-y-2.5 text-xs font-medium text-neutral-300">
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  VAT Services
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Corporate Tax
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Accounting & Bookkeeping
-                </a>
-              </li>
+            <ul className="mt-4 space-y-2 text-xs font-normal text-neutral-300">
+              <li>VAT Services</li>
+              <li>Corporate Tax</li>
+              <li>Accounting & Bookkeeping</li>
             </ul>
           </div>
 
           {/* Service Column 3: Corporate Compliance & Advisory */}
           <div>
-            <p className="text-sm font-bold text-white">
-              Compliance & Advisory
-            </p>
+            <a
+              href="#services"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline underline-offset-4 transition-colors"
+            >
+              <span>Compliance & Advisory</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/70" />
+            </a>
 
-            <ul className="mt-4 space-y-2.5 text-xs font-medium text-neutral-300">
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  AML & UBO Compliance
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Regulatory Reporting
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Corporate Governance & Risk Management
-                </a>
-              </li>
+            <ul className="mt-4 space-y-2 text-xs font-normal text-neutral-300">
+              <li>AML & UBO Compliance</li>
+              <li>Regulatory Reporting</li>
+              <li>Corporate Governance & Risk Management</li>
             </ul>
           </div>
 
           {/* Service Column 4: Concierge & PRO Services */}
           <div>
-            <p className="text-sm font-bold text-white">
-              Concierge & PRO
-            </p>
+            <a
+              href="#services"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-white hover:underline underline-offset-4 transition-colors"
+            >
+              <span>Concierge & PRO</span>
+              <ArrowUpRight className="h-3.5 w-3.5 text-white/70" />
+            </a>
 
-            <ul className="mt-4 space-y-2.5 text-xs font-medium text-neutral-300">
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  PRO & Visa Services
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Document Attestation & Translation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Travel & Accommodation Assistance
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Relocation Support
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">
-                  Administrative Assistance
-                </a>
-              </li>
+            <ul className="mt-4 space-y-2 text-xs font-normal text-neutral-300">
+              <li>PRO & Visa Services</li>
+              <li>Document Attestation & Translation</li>
+              <li>Travel & Accommodation Assistance</li>
+              <li>Relocation Support</li>
+              <li>Administrative Assistance</li>
             </ul>
           </div>
         </div>

@@ -18,23 +18,23 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const trustItems = [
   {
     number: "01",
-    title: "Founder-first",
-    text: "Guidance designed around your objectives",
+    title: "Professional guidance",
+    text: "Committed to delivering expert, reliable corporate solutions",
   },
   {
     number: "02",
-    title: "Connected support",
-    text: "Formation to ongoing corporate care",
+    title: "Efficient solutions",
+    text: "Simplifying company formation, licensing, and compliance",
   },
   {
     number: "03",
-    title: "UAE expertise",
-    text: "Practical knowledge of the local landscape",
+    title: "Client-focused",
+    text: "Building lasting partnerships at every stage of the business journey",
   },
   {
     number: "04",
-    title: "Clear communication",
-    text: "Straightforward answers and next steps",
+    title: "Long-term success",
+    text: "Enabling clients to focus on growth, innovation, and expansion",
   },
 ];
 
@@ -58,11 +58,10 @@ export function AboutSection() {
       <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-[0.7fr_1.3fr] lg:px-8">
         <div className="flex flex-col justify-between gap-12">
           <ScrollReveal delay={0.05} direction="up">
-            <SectionBadge label="About Nomad Aurelia" theme="light" />
+            <SectionBadge label="About Us" theme="light" />
 
             <p className="mt-5 max-w-xs text-sm font-medium leading-6 text-neutral-700">
-              A UAE-based business consultancy supporting entrepreneurs,
-              investors and established businesses.
+              NOMAD AURELIA L.L.C-FZ is a UAE-based business consultancy dedicated to providing tailored corporate solutions.
             </p>
 
             <div className="mt-6">
@@ -89,25 +88,20 @@ export function AboutSection() {
         <div>
           <ScrollReveal delay={0.1} direction="up">
             <h2 className="max-w-5xl font-serif text-5xl leading-[0.95] tracking-[-0.035em] text-neutral-950 sm:text-6xl lg:text-7xl font-semibold">
-              The right business structure should make your next move easier,
-              not create another layer of complexity.
+              Supporting entrepreneurs, startups, and established businesses in achieving their goals.
             </h2>
           </ScrollReveal>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2">
             <ScrollReveal delay={0.2} direction="up">
               <p className="text-base font-normal leading-7 text-neutral-800">
-                Nomad Aurelia helps clients navigate the UAE business
-                environment with tailored corporate solutions across formation,
-                licensing, banking, tax, compliance and administration.
+                NOMAD AURELIA L.L.C-FZ is specialized in business setup, company formation, licensing, and corporate support services, helping clients navigate the UAE’s dynamic business landscape with confidence and ease.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.25} direction="up">
               <p className="text-base font-normal leading-7 text-neutral-700">
-                Our role is to simplify the decisions behind establishing and
-                growing a business, while providing practical support through
-                the details that follow.
+                At NOMAD AURELIA L.L.C-FZ, we are committed to delivering professional guidance, efficient solutions, and a client-focused approach, enabling our clients to focus on growth, innovation, and long-term success.
               </p>
             </ScrollReveal>
           </div>

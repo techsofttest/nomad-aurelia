@@ -14,6 +14,7 @@ export function ConsultationSection() {
             src="/banner/b2.png"
             alt="Consultation Background"
             fill
+            sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
 

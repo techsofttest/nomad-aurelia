@@ -4,23 +4,23 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const trustPoints = [
   {
     number: "01",
-    title: "Tailored structures",
-    text: "Your business model, ownership structure and growth plans shape the route we recommend.",
+    title: "Tailored solutions",
+    text: "Dedicated to providing customized corporate setups that support your specific business goals.",
   },
   {
     number: "02",
-    title: "One coordinated partner",
-    text: "Formation, banking, tax, compliance and administrative support are connected instead of scattered.",
+    title: "Professional guidance",
+    text: "Helping clients navigate the UAE’s dynamic business landscape with confidence and ease.",
   },
   {
     number: "03",
-    title: "Clear communication",
-    text: "We explain what needs to happen, why it matters and what comes next.",
+    title: "End-to-end support",
+    text: "From company formation and licensing to banking, tax, compliance, and ongoing corporate administration.",
   },
   {
     number: "04",
-    title: "Long-term support",
-    text: "Our relationship continues beyond incorporation as your business grows and changes.",
+    title: "Lasting partnerships",
+    text: "Delivering reliable support at every stage, enabling you to focus on growth and long-term success.",
   },
 ];
 
@@ -29,10 +29,10 @@ export function WhyChooseSection() {
     <section className="bg-[var(--color-gold-pale)] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <ScrollReveal delay={0.05} direction="up" className="max-w-4xl">
-          <SectionBadge label="Why clients choose Nomad" theme="light" />
+          <SectionBadge label="Why Choose Nomad Aurelia" theme="light" />
 
           <h2 className="mt-5 font-serif text-5xl font-semibold leading-[0.94] tracking-[-0.035em] text-neutral-950 sm:text-6xl lg:text-7xl">
-            Trust is built by making complicated decisions feel clear.
+            Committed to professional guidance, efficient solutions, and a client-focused approach.
           </h2>
         </ScrollReveal>
 

@@ -94,22 +94,23 @@ export function ServicesMegaDropdown({
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
                 {serviceCategories.map((group) => (
                   <div key={group.category} className="flex flex-col">
-                    {/* Category Title: crisp white, highly legible */}
-                    <h3 className="text-[13px] font-bold text-white tracking-wide border-b border-white/20 pb-2.5">
-                      {group.category}
-                    </h3>
+                    {/* Category Title: Linked to #services, crisp white and hoverable */}
+                    <a
+                      href="#services"
+                      onClick={onClose}
+                      className="group/cat flex items-center justify-between border-b border-white/20 pb-2.5 transition-colors"
+                    >
+                      <h3 className="text-[13px] font-bold text-white tracking-wide group-hover/cat:underline underline-offset-4">
+                        {group.category}
+                      </h3>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-white/70 group-hover/cat:text-white transition-colors" />
+                    </a>
 
-                    {/* Service Items: high contrast white/neutral-100 */}
-                    <ul className="mt-3.5 space-y-2.5 text-[13px] leading-snug">
+                    {/* Service Items: Plain text listing (not links) */}
+                    <ul className="mt-3.5 space-y-2 text-[13px] leading-snug">
                       {group.items.map((item) => (
-                        <li key={item}>
-                          <a
-                            href="#services"
-                            onClick={onClose}
-                            className="block text-neutral-100 hover:text-white hover:underline underline-offset-4 transition-colors"
-                          >
-                            {item}
-                          </a>
+                        <li key={item} className="text-neutral-200">
+                          {item}
                         </li>
                       ))}
                     </ul>

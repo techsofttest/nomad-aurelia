@@ -192,22 +192,21 @@ export function Header() {
                 <div className="ml-3 my-2 flex flex-col gap-5 border-l border-white/20 pl-4">
                   {serviceCategories.map((group) => (
                     <div key={group.category}>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--color-gold)]">
-                        {group.category}
-                      </p>
+                      <a
+                        href="#services"
+                        onClick={() => {
+                          setMobileServicesOpen(false);
+                          setMobileOpen(false);
+                        }}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-white hover:underline underline-offset-4"
+                      >
+                        <span>{group.category}</span>
+                        <ArrowUpRight className="h-3 w-3" />
+                      </a>
                       <ul className="mt-2 space-y-1.5 text-xs text-neutral-300">
                         {group.items.map((item) => (
-                          <li key={item}>
-                            <a
-                              href="#services"
-                              onClick={() => {
-                                setMobileServicesOpen(false);
-                                setMobileOpen(false);
-                              }}
-                              className="block py-1 leading-relaxed hover:text-white"
-                            >
-                              {item}
-                            </a>
+                          <li key={item} className="py-0.5 leading-relaxed text-neutral-300">
+                            {item}
                           </li>
                         ))}
                       </ul>

@@ -95,6 +95,7 @@ export function ServicesSection() {
         alt="Nomad Aurelia Services Background"
         fill
         priority={false}
+        sizes="100vw"
         className="object-cover object-center"
       />
       <div

@@ -10,23 +10,23 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const steps = [
   {
-    title: "Understand",
-    text: "We start with your objectives, activities, ownership and plans.",
-    icon: Compass,
-  },
-  {
-    title: "Structure",
-    text: "We identify the practical route through the available UAE options.",
-    icon: Layers,
-  },
-  {
-    title: "Establish",
-    text: "We coordinate documentation, licensing and formation requirements.",
+    title: "Company Formation",
+    text: "Tailored business setup across mainland, free zones, and offshore jurisdictions.",
     icon: Building2,
   },
   {
-    title: "Activate",
-    text: "We support banking, tax, visas and the operational details.",
+    title: "Banking Solutions",
+    text: "Guidance on corporate and personal bank accounts, KYC, and digital payment systems.",
+    icon: Compass,
+  },
+  {
+    title: "Tax & Compliance",
+    text: "VAT, corporate tax, bookkeeping, AML & UBO declarations, and regulatory reporting.",
+    icon: Layers,
+  },
+  {
+    title: "Concierge & PRO",
+    text: "Visas, Emirates ID, labor cards, document attestation, and relocation support.",
     icon: Rocket,
   },
 ];
@@ -38,13 +38,13 @@ export function ApproachSection() {
         {/* Top Centered Header */}
         <ScrollReveal delay={0.05} direction="up" className="mx-auto max-w-3xl text-center">
           <SectionBadge
-            label="A clearer journey"
+            label="Professional guidance"
             theme="light"
             className="justify-center"
           />
 
           <h2 className="mt-5 font-serif text-4xl font-semibold leading-[1.02] tracking-[-0.035em] text-neutral-950 sm:text-5xl lg:text-6xl">
-            From the first question to a business that is ready to move.
+            Reliable support at every stage of your business journey in the UAE.
           </h2>
         </ScrollReveal>
 

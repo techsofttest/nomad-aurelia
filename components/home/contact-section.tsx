@@ -12,6 +12,7 @@ export function ContactSection() {
         src="/banner/b4.jpg"
         alt="Nomad Aurelia Contact"
         fill
+        sizes="100vw"
         className="object-cover object-center"
       />
 
