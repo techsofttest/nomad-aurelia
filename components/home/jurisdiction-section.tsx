@@ -46,15 +46,12 @@ export function JurisdictionSection({js}:{js?:AboutData}) {
               sizes="(max-width: 1024px) 100vw, 42vw"
               className="object-cover object-center"
             />
-            {/* Soft badge overlay */}
             <div className="absolute left-5 top-5 rounded-md bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-[var(--color-ink)] backdrop-blur-sm">
               Mainland · Free Zone · Offshore
             </div>
           </ScrollReveal>
 
-          {/* Bento Right Column (Spans 7 cols on lg): 3 Jurisdiction Cards + CTA Card */}
           <div className="flex flex-col gap-5 lg:col-span-7">
-            {/* 3 Jurisdiction Cards in a structured layout */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
 
               <ScrollReveal
