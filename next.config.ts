@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "techsoftwebsolutions.com",
-        pathname: "/techsoft/demo/visitor/public/upload/**",
+        pathname: "/techsoft/demo/nomad/public/upload/**",
       },
     ],
   },
